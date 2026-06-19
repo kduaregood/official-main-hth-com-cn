@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 持续关注的质感体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f5f7;
+            color: #1e1e2a;
+            line-height: 1.6;
+        }
+
+        /* ===== Hero 深色区 ===== */
+        .hero {
+            background: linear-gradient(145deg, #0f111a 0%, #1b1e2b 100%);
+            color: #eaeef2;
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 100, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 span {
+            color: #f9cf7c;
+            font-weight: 600;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 1.8rem;
+            font-size: 1.125rem;
+            color: #cbd0da;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 215, 100, 0.12);
+            border: 1px solid rgba(255, 215, 100, 0.3);
+            border-radius: 40px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.85rem;
+            color: #f0d68a;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== 白色正文区 ===== */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            background: #ffffff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-top: 2.8rem;
+            margin-bottom: 1.4rem;
+            color: #1a1c28;
+            border-left: 5px solid #d9a74a;
+            padding-left: 1rem;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .grid-advantage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .advantage-item {
+            background: #f8f9fc;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .advantage-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .advantage-item .icon {
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 0.6rem;
+        }
+
+        .advantage-item h3 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #1e1e2a;
+        }
+
+        .advantage-item p {
+            color: #4b4e5c;
+            font-size: 0.95rem;
+        }
+
+        .desc-block {
+            margin: 2rem 0 1.8rem;
+            padding: 1.2rem 0;
+        }
+
+        .desc-block p {
+            margin-bottom: 1.2rem;
+            color: #2c2e3a;
+        }
+
+        .faq-summary {
+            background: #f2f4f9;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .faq-summary h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #1a1c28;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #dee0e7;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #252733;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-answer {
+            color: #545766;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: 3.8rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e3e5ec;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.2rem;
+            font-size: 0.95rem;
+            color: #5a5d6c;
+        }
+
+        .footer-links a {
+            color: #b8883a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s ease, color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: #8a6a2e;
+            border-bottom-color: #d9a74a;
+        }
+
+        .footer-note {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #7f8291;
+        }
+
+        .inline-link {
+            color: #b28436;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #d9b15e;
+            font-weight: 500;
+        }
+
+        .inline-link:hover {
+            color: #7c5f27;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 2rem 1.5rem 3rem;
+            }
+            .grid-advantage {
+                gap: 1.2rem;
+            }
+            .faq-summary {
+                padding: 1.5rem 1.2rem;
+            }
+            .footer-links {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-note {
+                text-align: center;
+                margin-top: 0.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .advantage-item {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO 深色区 -->
+    <section class="hero">
+        <div class="badge">✦ 常来常新 · 收藏即重逢</div>
+        <h1>再次回到 <span>华体会</span> 的空间</h1>
+        <p>
+            有些体验值得你放进书签，隔段时间就回来看看。<br>
+            从第一次相遇，到每一次回访，我们希望这里始终有新的细节打动你。
+        </p>
+    </section>
+
+    <!-- 浅色正文区 -->
+    <main class="content">
+
+        <!-- 优势区（卡片网格） -->
+        <h2 class="section-title">为什么值得反复回来</h2>
+        <div class="grid-advantage">
+            <div class="advantage-item">
+                <div class="icon">📌</div>
+                <h3>收藏即归属</h3>
+                <p>把页面加入书签，就等于在家门口留了一盏灯。每次打开都是熟悉的安心感。</p>
+            </div>
+            <div class="advantage-item">
+                <div class="icon">🔄</div>
+                <h3>内容持续生长</h3>
+                <p>不是一成不变的门户。模块、话题、呈现方式会随着季节和用户反馈慢慢迭代。</p>
+            </div>
+            <div class="advantage-item">
+                <div class="icon">👀</div>
+                <h3>不打扰的关注</h3>
+                <p>没有弹窗、不追着推送。你想起的时候过来看看，我们就在这儿。</p>
+            </div>
+            <div class="advantage-item">
+                <div class="icon">🧩</div>
+                <h3>细节常换常新</h3>
+                <p>从视觉到文案，每次回访都可能发现一点小变化，像朋友的近况更新。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：从“再次访问”的角度展开 -->
+        <div class="desc-block">
+            <h2 class="section-title">把熟悉的地方，住成日常</h2>
+            <p>
+                很多时候我们收藏一个站点，不是因为一次惊艳，而是因为它成为了习惯的一部分。
+                <a class="inline-link" href="https://official-main-hth.com.cn">华体会</a> 这个位置，
+                就像浏览器收藏夹里那个你舍不得删掉的标签——它不吵不闹，但你每次点开，
+                都能找回之前那种舒服的节奏。
+            </p>
+            <p>
+                日常的使用场景往往很安静：午后想换换心情的时候，睡前想浏览一点有质感的内容时，
+                或是纯粹想确认一下“那个熟悉的页面还在不在”。我们把这些场景里的体验当作设计的重心，
+                让每一次回访都像和老朋友碰面，不必寒暄太多，但彼此都懂。
+            </p>
+            <p>
+                页面里没有花哨的噱头，只有干净的结构和恰好的留白。你可以快速找到自己关心的部分，
+                也可以随意逛逛，让目光在卡片和段落间停留。正是这种不被追赶的浏览感，
+                让许多人愿意把这里放在“常用”列表里。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h3>❓ 一些你可能想问的</h3>
+
+            <div class="faq-item">
+                <div class="faq-question">每次回来内容都一样吗？</div>
+                <div class="faq-answer">部分核心区域保持稳定，但页面中的推荐、提示和细节会不定期更新，让熟悉中带一点新鲜感。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">需要注册或登录吗？</div>
+                <div class="faq-answer">目前不需要。我们更希望你用最轻的方式访问，收藏即会员。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">为什么推荐我把页面加入收藏夹？</div>
+                <div class="faq-answer">因为这样你可以在任何设备上随时回来，不必依赖搜索或记忆。每次打开收藏夹，它都在那里等你。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">未来会有更多功能或板块吗？</div>
+                <div class="faq-answer">会。团队会根据用户习惯慢慢丰富内容层次，但始终保持克制的风格和流畅的浏览节奏。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接 + 版权 / 说明 -->
+        <div class="footer-links">
+            <div>
+                <span>→ 直接前往 </span>
+                <a href="https://official-main-hth.com.cn">华体会</a>
+                <span style="margin-left: 0.3rem;">· 收藏即重逢</span>
+            </div>
+            <div class="footer-note">
+                <span>保持关注 · 常驻书签</span>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

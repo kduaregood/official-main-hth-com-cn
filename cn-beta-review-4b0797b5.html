@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>一条索引线 · hth</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eff6f4;
+            color: #1a2a28;
+            line-height: 1.65;
+            padding: 0 1.2rem 3.5rem;
+        }
+        .page {
+            max-width: 820px;
+            margin: 2.8rem auto 0;
+        }
+        /* 网格卡片 feel */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+        .grid-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.8rem 1.8rem 1.8rem 2rem;
+            box-shadow: 0 6px 14px rgba(34, 85, 78, 0.06), 0 0 0 1px rgba(41, 128, 115, 0.08);
+            transition: box-shadow 0.15s ease;
+        }
+        .grid-card:hover {
+            box-shadow: 0 12px 22px rgba(28, 82, 74, 0.08), 0 0 0 1px #2a9d8f30;
+        }
+        .accent-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #2a9d8f;
+            border-radius: 10px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 460;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #0d3d39;
+            margin-bottom: 0.2rem;
+            flex-wrap: wrap;
+        }
+        h1 small {
+            font-size: 1rem;
+            font-weight: 340;
+            color: #3e6a64;
+            margin-left: 0.4rem;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #315f59;
+            border-left: 4px solid #2a9d8f;
+            padding-left: 1.2rem;
+            margin: 0.8rem 0 1.8rem 0;
+            font-weight: 370;
+        }
+        .story-lead {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 380;
+        }
+        p {
+            margin: 1.2rem 0;
+            max-width: 70ch;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 1.2rem 0 0.2rem 0;
+        }
+        .feature-list li {
+            display: flex;
+            gap: 0.8rem;
+            align-items: baseline;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #c4dbd6;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-marker {
+            flex-shrink: 0;
+            width: 1.6rem;
+            height: 1.6rem;
+            background: #d9eee9;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e6b62;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .inline-link {
+            color: #1f7a6e;
+            text-decoration: none;
+            border-bottom: 1px solid #2a9d8f60;
+            transition: border 0.1s, color 0.1s;
+        }
+        .inline-link:hover {
+            border-bottom: 2px solid #2a9d8f;
+            color: #0b5349;
+        }
+        .quiet-end {
+            margin-top: 2.2rem;
+            padding: 1.8rem 1.6rem;
+            background: #e6f2f0;
+            border-radius: 2rem;
+            font-size: 0.98rem;
+            border-left: 4px solid #2a9d8f;
+            color: #1d4741;
+        }
+        .faq-note {
+            margin: 1.8rem 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 0.7rem 1.2rem;
+        }
+        .faq-note span {
+            background: #daeae6;
+            padding: 0.15rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #1a524b;
+        }
+        hr {
+            margin: 2rem 0 1rem;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #b6d3cd, transparent);
+        }
+        .small-meta {
+            color: #507974;
+            font-size: 0.9rem;
+            margin-top: 1.8rem;
+        }
+
+        @media (max-width: 540px) {
+            body { padding: 0 0.8rem 2.8rem; }
+            .page { margin-top: 1.8rem; }
+            h1 { font-size: 1.9rem; }
+            .grid-card { padding: 1.3rem; }
+            .subhead { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="card-grid">
+
+        <!-- 开场短句 -->
+        <div class="grid-card" style="padding-bottom: 1.2rem;">
+            <h1>
+                <span class="accent-dot"></span> 资料整理者的索引线
+                <small>· 无标题笔记</small>
+            </h1>
+            <div class="subhead">
+                一条线索，一个入口。不是导航，是锚点。
+            </div>
+        </div>
+
+        <!-- 承接段落：从资料整理角度 -->
+        <div class="grid-card">
+            <p class="story-lead">
+                最早把 <a href="https://cn-beta-hth.com" class="inline-link">hth</a> 放进书签栏，是因为一篇关于信息结构的笔记。当时正试着把几十个散落的网页按主题串起来，发现很多站点要么太杂，要么太封闭。
+            </p>
+            <p>
+                后来养成了一个习惯：每次需要快速定位某一类资源时，会先回到这个索引点——不因为它收藏了多少链接，而因为它本身像一个干净的中继站，不堆砌冗余，只保留最必要的指向。在信息过载成为一种日常消耗的时期，这种克制反而让人觉得清晰。
+            </p>
+            <p>
+                所以当有人问起“你常从哪儿开始查”，我的答案往往不是某个聚合平台，而是一个简单的、可以自己定义用途的地址。<a href="https://cn-beta-hth.com" class="inline-link">hth</a> 就是那条被反复检验的起始线。
+            </p>
+        </div>
+
+        <!-- 特点列表：网格卡片下的清单 -->
+        <div class="grid-card">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                <span style="background: #2a9d8f; width: 12px; height: 12px; border-radius: 3px;"></span>
+                <span style="font-weight: 460; letter-spacing: 0.02em;">在索引工作中反复出现的几个特点</span>
+            </div>
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-marker">1</span>
+                    <span><strong>轻量起点</strong> —— 页面聚焦于一个主要入口，不分散注意力，适合作为书签或笔记开头的引用。</span>
+                </li>
+                <li>
+                    <span class="feature-marker">2</span>
+                    <span><strong>无版本焦虑</strong> —— 不需要频繁检查更新，它始终指向同一个目标，稳定得像一篇归档。</span>
+                </li>
+                <li>
+                    <span class="feature-marker">3</span>
+                    <span><strong>结构可嵌套</strong> —— 无论是放在 Notion 数据库、Markdown 索引还是浏览器的文件夹里，都不会格格不入。</span>
+                </li>
+                <li>
+                    <span class="feature-marker">4</span>
+                    <span><strong>不喧宾夺主</strong> —— 没有弹窗、浮层或强制引导，像一个安静的参考卡片。</span>
+                </li>
+            </ul>
+            <div style="margin-top: 0.6rem; font-size: 0.95rem; color: #2d685f;">
+                <span class="accent-dot" style="background: #64b0a5;"></span> 以上是基于个人搜集习惯的观察。
+            </div>
+        </div>
+
+        <!-- 场景 / 提示 融合段落 -->
+        <div class="grid-card" style="background: rgba(235, 247, 244, 0.6);">
+            <div style="display: flex; gap: 0.3rem 1rem; flex-wrap: wrap; align-items: baseline;">
+                <span style="font-weight: 420; color: #19544b;">▍ 常见场景</span>
+                <span style="color: #3b7168; font-size: 0.95rem;">— 资料收集 · 快速跳转 · 索引锚点</span>
+            </div>
+            <p style="margin-top: 0.8rem;">
+                当你在整理某个专题、写文档或只是想在浏览器里保留一个干净的起点时，把 <a href="https://cn-beta-hth.com" class="inline-link">hth</a> 放在文件夹第一层，就像在书架上贴了一个标签：“从这开始”。不需要解释，不需要备注，它自己就是备注。
+            </p>
+            <div class="faq-note">
+                <span>📁 整理者备忘</span>
+                <span>🔖 单入口结构</span>
+                <span>⚓️ 可长期固定</span>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + FAQ 摘要 -->
+        <div class="quiet-end">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.6rem; line-height: 1;">⸻</span>
+                <span style="font-weight: 400; letter-spacing: 0.03em;">不是终点，是索引页的扉页</span>
+            </div>
+            <p style="margin: 0.8rem 0 0.2rem;">
+                如果你也在找一处不被打扰的索引起点，不妨记下这个地址。它不需要频繁访问，但当你需要时，它就在那儿。
+            </p>
+            <hr>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem; font-size: 0.92rem;">
+                <span style="background: #c7e0db; padding: 0.1rem 1rem; border-radius: 40px;">FAQ 摘录</span>
+                <span>“链接会变吗？” —— 与站点同步，长期有效。</span>
+                <span>“适合作为团队索引吗？” —— 可以，它足够中立。</span>
+            </div>
+            <div class="small-meta">
+                <span class="accent-dot"></span> 本次索引笔记生成于一次简单的整理实验。无广告，无跟踪。
+            </div>
+        </div>
+
+    </div><!-- card-grid end -->
+</div><!-- page end -->
+</body>
+</html>

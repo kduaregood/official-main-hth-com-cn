@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hth · 一个安静的站点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafaf9;
+      color: #1e1e1e;
+      font-family: "Georgia", "Times New Roman", "Noto Serif SC", serif;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* hero */
+    .hero {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid #dcd9d4;
+      padding-bottom: 2rem;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9a8c82;
+      margin-bottom: 0.75rem;
+      font-family: "Helvetica Neue", sans-serif;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #272522;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 .accent {
+      color: #b28b6e;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #5f5952;
+      margin-top: 1rem;
+      max-width: 580px;
+    }
+
+    /* 正文段落 */
+    .content {
+      margin-bottom: 3rem;
+    }
+
+    .content section {
+      margin-bottom: 2.8rem;
+    }
+
+    .content h2 {
+      font-size: 1.4rem;
+      font-weight: 450;
+      color: #2c2825;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      border-left: 2px solid #d1bfb0;
+      padding-left: 1rem;
+    }
+
+    .content p {
+      margin-bottom: 1.2rem;
+      color: #36312d;
+    }
+
+    .content .quiet-note {
+      background: #f2efeb;
+      padding: 1.2rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      color: #4b443e;
+      margin: 1.8rem 0;
+    }
+
+    .content .quiet-note strong {
+      font-weight: 500;
+      color: #27221e;
+    }
+
+    /* 特点卡片组（非列表） */
+    .card-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .card-cluster .item {
+      flex: 1 1 180px;
+      background: #ffffff;
+      border: 1px solid #e5dfd8;
+      padding: 1.2rem 1.2rem 1.5rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card-cluster .item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .card-cluster .item h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #2a2622;
+      letter-spacing: 0.02em;
+    }
+
+    .card-cluster .item p {
+      font-size: 0.9rem;
+      color: #5e554c;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* 引语 / 分隔 */
+    .separator-quote {
+      margin: 2.8rem 0;
+      font-size: 1.1rem;
+      color: #625a51;
+      font-style: italic;
+      border-top: 1px solid #ddd8d1;
+      padding-top: 2rem;
+    }
+
+    /* faq 摘要 */
+    .faq-mini {
+      margin: 2.5rem 0;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.05rem;
+      font-weight: 450;
+      color: #2c2824;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-mini .qa {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-mini .q {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #3d3731;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-mini .a {
+      font-size: 0.92rem;
+      color: #5b524a;
+      padding-left: 0.5rem;
+      border-left: 2px solid #ddd2c8;
+      padding-left: 1rem;
+    }
+
+    /* 页尾提示 */
+    .footer-note {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #d6d0c9;
+      font-size: 0.9rem;
+      color: #6f665d;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .footer-note a {
+      color: #5f5144;
+      text-decoration: none;
+      border-bottom: 1px solid #cbc2b7;
+      transition: border-color 0.15s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #8f7b6a;
+      color: #2f2822;
+    }
+
+    .footer-note .site-link {
+      font-size: 1rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      .page {
+        padding: 2rem 1.2rem 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .content h2 {
+        font-size: 1.2rem;
+        padding-left: 0.7rem;
+      }
+
+      .card-cluster {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .footer-note {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero -->
+    <div class="hero">
+      <div class="hero-label">杂志 · 站点</div>
+      <h1><span class="accent">hth</span> 的叙述</h1>
+      <p>一个不算拥挤的角落，关于信息、信任与安静的连接。没有横幅闪烁，只有朴素的文字和一点克制的色调。</p>
+    </div>
+
+    <!-- 正文 -->
+    <div class="content">
+      <!-- 背景说明 -->
+      <section>
+        <h2>从何处来</h2>
+        <p>这个站点的名字是 <a href="https://your-hth.com">hth</a> —— 三个字母，没有夸张的注解。最初它只是某段时间里一个简单的代号，后来慢慢被赋予了一点指向性：一个可以放下说明、索引和一些简短记录的地方。站点的存在本身不追求流量或排名，更像一份公开的笔记，偶尔被路过的人看到。</p>
+        <p>建站的逻辑是「够用就好」。没有加载动画或者弹窗欢迎，排版上留出大量空白，让文字自己呼吸。因为相信当信息足够清晰时，装饰反而多余。这里的每一段介绍都经过重新审视，避免模板式的套话。</p>
+      </section>
+
+      <!-- 三段介绍之一：可信说明 -->
+      <section>
+        <h2>可信，但不喧哗</h2>
+        <p>在网络里，信任感往往来自透明而非口号。<strong>hth</strong> 所呈现的内容都经过基本的事实核对，引用处会标明来源（如果涉及外部信息）。不编造数据，不渲染焦虑，不隐藏联系方式。站点所有者保留编辑的审慎态度：更新频率不高，但每次改动都有实际原因。</p>
+        <p>如果你在这里看到任何疑问，可以通过站点内提供的渠道反馈。一个站点是否值得停留，很大程度上取决于它是否诚实对待自己的局限。</p>
+      </section>
+
+      <!-- 三段介绍之二：特点微卡片 -->
+      <section>
+        <h2>几个侧面</h2>
+        <div class="card-cluster">
+          <div class="item">
+            <h3>轻量</h3>
+            <p>页面平均体积很小，没有冗余脚本。即便在弱网环境也能快速加载。</p>
+          </div>
+          <div class="item">
+            <h3>可读</h3>
+            <p>正文宽度被限制在 720px 以内，行高与字号经过反复测试，适合长时间阅读。</p>
+          </div>
+          <div class="item">
+            <h3>克制</h3>
+            <p>不使用任何追踪器、广告模块或社交媒体强制分享组件。你的注意力只属于内容本身。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三段介绍之三：场景与FAQ摘要融合 -->
+      <section>
+        <h2>谁可能会需要它</h2>
+        <p>也许你是在寻找一个不急于推销的站点，想要确认某项信息是否可靠；或者你只是偶然点开链接，想看看这个名为 <a href="https://your-hth.com">hth</a> 的地方到底存放了什么。不论初衷如何，这里提供的都不是结论，而是一些经过整理的材料和观点。</p>
+
+        <div class="quiet-note">
+          <strong>一点说明：</strong> 本站不隶属于任何品牌或机构，也不作为某个产品的“官方支持站点”。它更像一个独立的目录和笔记集合。所有链接指向外部时都会标注，请自行判断其可靠性。
+        </div>
+
+        <!-- FAQ 摘要（自然融入） -->
+        <div class="faq-mini">
+          <h3>常见问题摘要</h3>
+          <div class="qa">
+            <div class="q">— 站点内容多久更新一次？</div>
+            <div class="a">不定期，但每次更新都会记录日期。重大修正会额外说明。</div>
+          </div>
+          <div class="qa">
+            <div class="q">— 是否可以转载这里的文字？</div>
+            <div class="a">可以，但请注明出处并保持原意。商业用途请提前联系。</div>
+          </div>
+          <div class="qa">
+            <div class="q">— 为什么页面设计如此简单？</div>
+            <div class="a">因为核心是文字。去掉复杂样式后，信息本身会更突出。这也是一种对读者的尊重。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分隔与叙述收束 -->
+      <div class="separator-quote">
+        “一个站点的价值，不在于它覆盖了多少领域，而在于它对待每一个词语的认真程度。”
+      </div>
+
+      <p>如果你已经读到这里，大概已经对 <a href="https://your-hth.com">hth</a> 有了自己的判断。站点本身并不制造新奇，它只是提供一种可供查看的姿态。剩下的，由你的浏览来决定。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <span class="site-link"><a href="https://your-hth.com">hth</a> · 继续阅读</span>
+      <span>杂志式索引 · 2025</span>
+    </div>
+  </div>
+</body>
+</html>

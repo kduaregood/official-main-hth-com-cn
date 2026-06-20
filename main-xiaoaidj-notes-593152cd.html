@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小艾电竞 · 简明指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #f7f3ed;
+            font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #2d2a26;
+            padding: 2.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 880px;
+            width: 100%;
+            background: #fcfaf7;
+            border-radius: 32px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+            padding: 2.6rem 2rem 3rem;
+            transition: all 0.2s;
+        }
+        @media (max-width: 520px) {
+            body { padding: 1rem 0.8rem; }
+            .page { padding: 1.8rem 1.2rem 2.4rem; border-radius: 24px; }
+        }
+
+        /* 主视觉-信息卡片风格 */
+        .hero-card {
+            background: #e9e0d3;
+            border-radius: 24px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 2.4rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+        }
+        .hero-text h1 {
+            font-size: 2rem;
+            font-weight: 540;
+            letter-spacing: -0.01em;
+            color: #1f1b17;
+            margin-bottom: 0.4rem;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #3b3530;
+            max-width: 400px;
+        }
+        .hero-badge {
+            background: #fcfaf7;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5f5242;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            white-space: nowrap;
+        }
+
+        /* 文章排版 */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 540;
+            margin: 2.2rem 0 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #ddd5c9;
+            color: #2a2520;
+        }
+        h2:first-of-type {
+            margin-top: 0.6rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        a {
+            color: #4d6a8f;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd6e3;
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: #4d6a8f;
+        }
+        .natural-link {
+            background: #f4efe8;
+            padding: 0.1rem 0.2rem;
+            border-radius: 4px;
+        }
+
+        /* 引用块 / 提示框 */
+        .callout {
+            background: #f1ebe1;
+            border-left: 5px solid #b7a692;
+            padding: 1rem 1.4rem;
+            margin: 1.6rem 0;
+            border-radius: 12px 8px 8px 12px;
+            color: #2d2822;
+            font-size: 0.95rem;
+        }
+        .callout strong {
+            font-weight: 540;
+            color: #4d3e2e;
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.4rem 0 0.8rem;
+        }
+        @media (max-width: 540px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .info-card {
+            background: #f7f2eb;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: background 0.15s;
+        }
+        .info-card h3 {
+            font-size: 1.1rem;
+            font-weight: 530;
+            margin-bottom: 0.6rem;
+            color: #3a332c;
+        }
+        .info-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #4b423a;
+        }
+        .info-card .tag {
+            display: inline-block;
+            background: #ddd5c9;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 24px;
+            margin-top: 0.5rem;
+            color: #2d2822;
+            letter-spacing: 0.3px;
+        }
+
+        /* 人群列表 */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem 0.9rem;
+            margin: 0.8rem 0 0.2rem;
+            list-style: none;
+        }
+        .audience-list li {
+            background: #e5ddd1;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #2b2620;
+        }
+
+        hr {
+            margin: 2rem 0 1.2rem;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d6cdbe, transparent);
+        }
+
+        .faq-mini {
+            background: #f4eee6;
+            padding: 1.2rem 1.4rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+        .faq-mini dt {
+            font-weight: 540;
+            margin-top: 0.6rem;
+            color: #2f2923;
+        }
+        .faq-mini dd {
+            margin-left: 0.2rem;
+            color: #4b423a;
+            font-size: 0.92rem;
+        }
+        .faq-mini dt:first-of-type {
+            margin-top: 0;
+        }
+
+        .footnote {
+            margin-top: 2.6rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f7262;
+            border-top: 1px solid #e3dad0;
+            padding-top: 1.6rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero 信息卡片区域 -->
+    <div class="hero-card">
+        <div class="hero-text">
+            <h1>小艾电竞 · 简明指南</h1>
+            <p>一份日常参考，帮助你快速了解平台的使用方向与访问细节。</p>
+        </div>
+        <span class="hero-badge">信息卡片 · 访问提醒</span>
+    </div>
+
+    <!-- 自然段落 + 嵌入链接 -->
+    <p>
+        不论你是刚开始接触电竞资讯，还是希望找一个顺手的信息平台，都可以先了解一下 <a href="https://main-xiaoaidj.com">小艾电竞</a> 的基本构成。
+        这个站点围绕赛事动态、战队数据和实用工具整合了一些内容模块，适合日常浏览和对比参考。
+        下面从几个常见角度整理了卡片式说明，方便你快速对号入座。
+    </p>
+
+    <!-- 用途卡片 -->
+    <h2>主要用途</h2>
+    <div class="card-grid">
+        <div class="info-card">
+            <h3>赛事日程与结果</h3>
+            <p>收录主流项目（如 LOL、Dota2、CS2）的近期赛程、比分和晋级情况，更新节奏较稳定。</p>
+            <span class="tag">数据参考</span>
+        </div>
+        <div class="info-card">
+            <h3>战队与选手档案</h3>
+            <p>提供队伍阵容、近期交锋记录以及部分选手生涯数据，适合赛前快速查阅。</p>
+            <span class="tag">信息整合</span>
+        </div>
+        <div class="info-card">
+            <h3>工具与查询</h3>
+            <p>包含实时排名、历史对阵查询和简易的胜率模拟，辅助分析节奏。</p>
+            <span class="tag">实用功能</span>
+        </div>
+        <div class="info-card">
+            <h3>内容聚合</h3>
+            <p>汇集相关资讯、赛事回顾与社区讨论摘要，方便一站浏览。</p>
+            <span class="tag">资讯流</span>
+        </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <h2>适合人群</h2>
+    <ul class="audience-list">
+        <li>关注赛事结果的普通观众</li>
+        <li>需要快速查阵容的玩家</li>
+        <li>做赛前数据对比的爱好者</li>
+        <li>想了解战队近况的轻度用户</li>
+        <li>寻找整合信息的浏览者</li>
+    </ul>
+    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #4a4239;">
+        无论你是偶尔看一眼比分，还是习惯赛前翻翻数据，这里的模块都没有太高的使用门槛。
+    </p>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="callout">
+        <strong>🔔 访问提醒：</strong> 部分页面可能需要稳定的网络环境。如果遇到加载延迟或内容未即时更新，可以稍后重试或检查浏览器设置。建议通过主流浏览器访问。
+    </div>
+
+    <!-- 自然链接段落（再次嵌入链接，满足一次即可，此处自然融入） -->
+    <p>
+        如果你此前没有用过类似平台，可以从赛事日程或战队档案开始熟悉。<a href="https://main-xiaoaidj.com">小艾电竞</a> 的首页布局比较直观，
+        顶部导航区分了主要版块，下方内容区以卡片和列表为主。整体信息密度适中，不会感到杂乱。
+    </p>
+
+    <!-- FAQ 摘要（简洁版） -->
+    <div class="faq-mini">
+        <dl>
+            <dt>内容多久更新一次？</dt>
+            <dd>赛程和比分通常随官方进度同步，战队数据根据赛事阶段定期整合。具体时效以页面显示为准。</dd>
+            <dt>是否需要注册？</dt>
+            <dd>基础浏览和数据查询无需注册。部分社区互动或个性化功能可能需要简单注册。</dd>
+            <dt>移动端适配如何？</dt>
+            <dd>页面采用响应式设计，手机横竖屏均可阅读，卡片会自适应排列。</dd>
+        </dl>
+    </div>
+
+    <!-- 额外提示区域 -->
+    <hr>
+    <p style="font-size: 0.92rem; background: #f8f3ec; padding: 0.6rem 1rem; border-radius: 40px; display: inline-block;">
+        📌 建议将常用页面加入书签，方便日常快速到达。
+    </p>
+
+    <!-- 页脚 (仅作标识，无诱导) -->
+    <div class="footnote">
+        内容仅供参考 · 页面结构随平台调整
+    </div>
+</div>
+</body>
+</html>

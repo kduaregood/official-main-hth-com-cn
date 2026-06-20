@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>极速赛车 · 速度与策略的竞速专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f1f7f9;
+            color: #1e2d3c;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 1.5rem 1.2rem;
+        }
+
+        /* 英雄横幅 — 网格卡片背景 */
+        .hero {
+            background: linear-gradient(145deg, #0f2c37 0%, #1c4b5a 100%);
+            border-radius: 2.5rem;
+            padding: 3rem 2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px rgba(9, 30, 45, 0.25);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(0, 210, 200, 0.08) 1px, transparent 1px),
+                linear-gradient(-135deg, rgba(0, 210, 200, 0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #e3f2f0;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #5edbd1;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            color: #b3dfda;
+            font-size: 1.1rem;
+            max-width: 70%;
+            border-left: 4px solid #3bc3b8;
+            padding-left: 1rem;
+            margin-top: 0.4rem;
+            font-weight: 350;
+        }
+
+        /* 网格卡片容器 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 6px 16px rgba(25, 60, 70, 0.08);
+            border: 1px solid rgba(60, 180, 170, 0.15);
+            transition: transform 0.15s ease, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 24px rgba(0, 130, 120, 0.12);
+        }
+
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #dbf5f2;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 20px;
+            color: #11665e;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #144b55;
+            margin: 0.8rem 0 0.4rem;
+            border-bottom: 2px solid #d0eee9;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2c4753;
+            margin-top: 0.2rem;
+        }
+
+        .card .meta-tag {
+            display: inline-block;
+            background: #e6f6f3;
+            color: #1b6e64;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            margin: 0.8rem 0 0;
+            font-weight: 500;
+        }
+
+        /* 背景说明 & 三段叙述区 */
+        .context-wrap {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            border-radius: 2.5rem;
+            padding: 2.2rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 24px rgba(0, 50, 60, 0.06);
+            border: 1px solid rgba(85, 185, 175, 0.2);
+        }
+
+        .context-wrap h2 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #0f3b40;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+        }
+
+        .context-wrap h2 small {
+            font-weight: 350;
+            font-size: 1rem;
+            color: #387c78;
+            margin-left: 0.8rem;
+        }
+
+        .lead-text {
+            font-size: 1.05rem;
+            color: #1b464e;
+            margin-bottom: 1.4rem;
+            padding: 0.5rem 1rem;
+            background: #ecf8f6;
+            border-radius: 48px;
+            display: inline-block;
+        }
+
+        .section-flow p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .section-flow p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #0a7a6e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px dotted #3db8ad;
+            transition: 0.1s;
+        }
+
+        .highlight-link:hover {
+            background: #c6ede7;
+            border-bottom-style: solid;
+            color: #034a41;
+        }
+
+        .faq-mini {
+            background: #f4fcfb;
+            border-radius: 28px;
+            padding: 1.6rem 1.8rem;
+            margin: 2.2rem 0 1.5rem;
+            border-left: 5px solid #3cb9ae;
+        }
+
+        .faq-mini h4 {
+            font-weight: 600;
+            color: #14575a;
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details {
+            margin: 0.6rem 0;
+            color: #1f4f52;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #19635b;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini summary::marker {
+            color: #2fa89c;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            padding: 1.6rem 0;
+            border-top: 1px solid #c7e2de;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .footer-note p {
+            color: #2f5f61;
+            font-size: 0.95rem;
+        }
+
+        .access-hint {
+            background: #1b5253;
+            color: #e0f5f2;
+            padding: 0.45rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 470;
+            letter-spacing: 0.02em;
+        }
+
+        .access-hint a {
+            color: #b6ffe4;
+            text-decoration: underline wavy #3ecfc0 1px;
+            text-underline-offset: 4px;
+            font-weight: 500;
+        }
+
+        .access-hint a:hover {
+            color: #ffffff;
+            text-decoration-color: #a1f7ea;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 640px) {
+            .page {
+                padding: 1rem 0.9rem;
+            }
+            .hero {
+                padding: 2rem 1.3rem;
+                border-radius: 2rem;
+            }
+            .hero-sub {
+                max-width: 100%;
+                font-size: 0.95rem;
+            }
+            .grid-cards {
+                gap: 1rem;
+            }
+            .context-wrap {
+                padding: 1.6rem 1.2rem;
+                border-radius: 2rem;
+            }
+            .context-wrap h2 {
+                font-size: 1.4rem;
+            }
+            .faq-mini {
+                padding: 1.2rem;
+            }
+            .footer-note {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 1.3rem;
+            }
+            .card .icon {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 英雄横幅 -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>极速<span>赛车</span> · 竞速的底层逻辑</h1>
+            <div class="hero-sub">从机械张力到策略节奏 — 一项关于反应与预判的专题观察</div>
+        </div>
+    </div>
+
+    <!-- 网格卡片：三个特点维度 -->
+    <div class="grid-cards">
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>瞬时决策</h3>
+            <p>赛道上的每一帧都压缩着选择。极速赛车场景中，大脑要在0.2秒内完成评估、取舍、执行三重任务。</p>
+            <span class="meta-tag">认知负荷</span>
+        </div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>节奏演化</h3>
+            <p>速度不仅仅是快，更是节奏的匹配。从起步到弯心再到直道尾端，每个区段都有不同的动态模组。</p>
+            <span class="meta-tag">运动模式</span>
+        </div>
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>系统博弈</h3>
+            <p>竞争从来不只是油门深浅。线路选择、时机压迫、能量管理共同构成多维对抗的拼图。</p>
+            <span class="meta-tag">多维博弈</span>
+        </div>
+    </div>
+
+    <!-- 背景说明 + 三段自然介绍 + 承接段落 -->
+    <div class="context-wrap">
+        <h2>背景·节奏的工程<small>机械与意图的交汇</small></h2>
+        <div class="lead-text">🏁 从赛道拓扑到心理时标</div>
+        <div class="section-flow">
+            <p>当我们谈论「极速赛车」时，实际上是在讨论一种高度压缩的时空。在封闭赛道上，速度不是最终目的，而是参数化的变量——它和抓地力、重心转移、出弯加速度共同构成一个实时系统。赛车本身的机械极限只是起点，真正的差异来自车手如何离散化地处理连续信息流。</p>
+            <p>有趣的是，这种情境下，人的感知系统会发生微妙的调整：时间感被拉长，同时注意力范围收窄。这就是为什么许多参与者描述自己进入了“慢动作”状态。实际上，大脑在高速负荷下选择了提升采样率，每一帧都变得更精细。这种现象在认知科学中被称为峰值体验的“时间膨胀效应”。</p>
+            <p>围绕<a href="https://speedpk10.com" class="highlight-link">极速赛车</a>这一主题，许多资料和平台都提供了结构化的分析视角。不论是新手了解基础动态，还是进阶者打磨策略细节，都可以借助系统化的数据与模拟来校准直觉。节奏的工程，最终落在人机协同的平衡点上。</p>
+        </div>
+
+        <!-- 类似FAQ摘要，但以知识卡片形式呈现 -->
+        <div class="faq-mini">
+            <h4>▸ 专题摘要 · 常见理解切入点</h4>
+            <details>
+                <summary>为什么说“极速”不只是速度数字？</summary>
+                <p>峰值速度只占竞赛周期的一小部分。更关键的是加减速的过渡效率、弯道中的最小速度维持能力以及连续变向时的横向稳定性。真正的高手，在高速区反而在“收”。</p>
+            </details>
+            <details>
+                <summary>心理训练在赛车场景中占多大比重？</summary>
+                <p>大量实证表明，决策质量和心率变异性高度相关。顶尖车手在直道末端心率下降，弯道前反而平静——这是一种由训练获得的自主神经调节能力。</p>
+            </details>
+            <details>
+                <summary>如何开始理解竞速的系统视角？</summary>
+                <p>推荐从单个弯道的速度曲线入手：入弯点、apex、出弯点三者之间的速度变化图谱，就是一套微型的动态模型。之后再串联成连续赛段。</p>
+            </details>
+        </div>
+        <p style="margin-top: 1rem; font-style: italic; color: #2b6a66; border-left: 3px solid #4bc3b5; padding-left: 1rem;">知识视角并不是将速度浪漫化，而是拆解其中的有序结构——这也是本次专题想要传递的基调。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>⚙️ 基于公开资料与运动科学视角梳理 · 更多内容可参考主题平台</p>
+        <div class="access-hint">
+            <span>浏览 </span><a href="https://speedpk10.com">极速赛车</a><span> 专题空间</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
